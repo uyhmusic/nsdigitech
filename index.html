@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS DIGITECH - Solusi Website Profesional</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0a1931;
+            --gold: #d4af37;
+            --light-gold: #f7e8c3;
+            --light-navy: #1a2c4e;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--navy) 30%, var(--gold) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .logo-img .logo-inner {
+            width: 35px;
+            height: 35px;
+            background-color: var(--gold);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.8)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: var(--navy);
+            color: var(--gold);
+            font-size: 40px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, var(--navy));
+            color: var(--white);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-header {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 25px;
+        }
+        
+        .pricing-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            padding: 25px;
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .featured {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 600;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            background-color: var(--navy);
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--navy);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--navy);
+            outline: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-navy);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-navy);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--navy);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .featured {
+                transform: scale(1);
+            }
+            
+            .logo h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <div class="logo-inner">NS</div>
+                </div>
+                <h1>NS DIGITECH</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Harga</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Solusi Website Profesional untuk Instansi & Bisnis Anda</h2>
+            <p>Kami menciptakan website yang menarik, responsif, dan berfungsi optimal untuk membantu bisnis Anda tumbuh di era digital.</p>
+            <a href="#contact" class="btn">Mulai Proyek Anda</a>
+            <a href="#portfolio" class="btn btn-outline">Lihat Portfolio</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Website Development</h3>
+                        <p>Kami mengembangkan website custom yang sesuai dengan kebutuhan bisnis Anda, mulai dari company profile, UMKM, Pendidikan, App Manajemen hingga e-commerce sederhana.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Responsive Design</h3>
+                        <p>Website yang kami buat akan tampil sempurna di semua perangkat, baik desktop, tablet, maupun smartphone.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>E-Commerce</h3>
+                        <p>Bangun toko online dengan fitur lengkap untuk memudahkan penjualan produk Anda secara digital.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>SEO Optimization</h3>
+                        <p>Optimasi website untuk mesin pencari agar bisnis Anda mudah ditemukan oleh calon pelanggan Anda.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Maintenance & Support</h3>
+                        <p>Layanan pemeliharaan dan dukungan teknis untuk memastikan website Anda selalu berjalan optimal.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>logo Design</h3>
+                        <p>Desain antarmuka yang menarik dan pengalaman pengguna yang optimal untuk meningkatkan konversi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio </h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="3.jpg" alt="Website Perusahaan">
+                    <div class="portfolio-overlay">
+                        <h3>Website DK Coffe</h3>
+                        <p>Company profile dengan desain modern</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="1.jpg" alt="E-Commerce">
+                    <div class="portfolio-overlay">
+                        <h3>Aplikasi E-Voting Pilketos</h3>
+                        <p>Platform dengan fitur yang unggul</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="2.jpg" alt="Blog">
+                    <div class="portfolio-overlay">
+                        <h3>Website Berita </h3>
+                        <p>Platform konten dengan Fitur CMS custom</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Paket Harga</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="price">Rp. 450rb<span>/project</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Website Company Profile</li>
+                        <li>5 Halaman Required</li>
+                        <li>Responsif dekstop & Mobile</li>
+                        <li>Form Kontak, Email, Dll.</li>
+                        <li>Optimasi SEO Dasar</li>
+                        <li>Free Domain my.id / biz.id 1 thn.</li>
+                        <li>Free 3x Revisi</li>
+                    </ul>
+                    <a href="https://wa.me/6285175483758?text=Halo,%20saya%20ingin%20memesan%20*Paket%20Website%20Basic*.%0AMohon%20informasikan%20detail%20harga,%20fitur,%20dan%20proses%20pembuatannya.%0A%0ABerikut%20data%20awal%20saya:%0A-%20Nama:%0A-%20Nama%20Usaha/Brand:%0A-%20Jenis%20Website:%0A-%20Deskripsi:%0A%0ATerima%20kasih.%0AKontak:%20+62%20851-7548-3758" class="btn" style="margin: 20px 0;">Pilih Paket</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Populer</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="price">Rp. 850rb<span>/project</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Website Custom</li>
+                        <li>10 Halaman Required</li>
+                        <li>Desain Responsif & Modern</li>
+                        <li>Integrasi Media Sosial</li>
+                        <li>Optimasi SEO Lengkap</li>
+                        <li>Free Domain .com 1 thn.</li>
+                        <li>1x required fitur</li>
+                        <li>Free 5x Revisi</li>
+                    </ul>
+                    <a href="#https://wa.me/6285175483758?text=Halo,%20saya%20berminat%20memesan%20*Paket%20Website%20Profesional*.%0ABolehkah%20saya%20mendapat%20informasi%20fitur,%20estimasi%20waktu,%20dan%20biaya%20totalnya?%0A%0AData%20awal:%0A-%20Nama:%0A-%20Nama%20Bisnis:%0A-%20Fitur%20khusus:%0A-%20Referensi%20tampilan:%0A%0ATerima%20kasih.%0AKontak:%20+62%20851-7548-3758
+" class="btn" style="margin: 20px 0;">Pilih Paket</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Aplikasi Manajemen</h3>
+                        <div class="price">Rp 1,5jt<span>/project</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Aplikasi Berbasis CRUD</li>
+                        <li>Bebas Required 3 Fitur</li>
+                        <li>Tampilan UI/UX Profesional</li>
+                        <li>Fitur - Fitur Utama Khusus</li>
+                        <li>Manajemen Barang/ Keuangan</li>
+                        <li>Fitur Tambahan Khusus iventory</li>
+                        <li>Responsive Mobile Dekstop</li>
+                        <li>Free Sebanyak 3x Revisi </li>
+                        <li>Responsive Website + PWA</li>
+                    </ul>
+                    <a href="#https://wa.me/6285175483758?text=Halo,%20saya%20ingin%20memesan%20*Paket%20Aplikasi%20Manajemen*.%0AMohon%20informasi%20fitur,%20opsi%20kustomisasi,%20dan%20biaya%20pengembangan.%0A%0AData%20awal:%0A-%20Nama:%0A-%20Nama%20Perusahaan:%0A-%20Jenis%20manajemen%20yang%20dibutuhkan:%0A-%20Alur%20kerja:%0A%0ATerima%20kasih.%0AKontak:%20+62%20851-7548-3758
+" class="btn" style="margin: 20px 0;">Pilih Paket</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Lokasi</h3>
+                            <p>Jl.Duduksampeyan, Kab. Gresik, Jawa Timur 61162</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>+62 851-7548-3758</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>rifanahdcw@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Jam Operasional</h3>
+                            <p>Senin - Sabtu: 08.00 - 16.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Jenis Layanan</label>
+                            <select id="service" class="form-control">
+                                <option value="">Pilih Layanan</option>
+                                <option value="website">Website Development</option>
+                                <option value="ecommerce">E-Commerce</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="maintenance">Maintenance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>NS DIGITECH</h3>
+                    <p>NS Digitech adalah perusahaan digital kreatif yang berfokus pada desain logo, branding, dan pengembangan website profesional untuk mendukung pertumbuhan bisnis Anda.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/p/1GVWZkzAPP/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nsdigitech_"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6285175483758"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#">DESIGN LOGO COMPANY</a></li>
+                        <li><a href="#">WEBSITE DEVELOPER</a></li>
+                        <li><a href="#">MAINTENANCE</a></li>
+                        <li><a href="#">SEO OPTIMAL</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#pricing">Harga</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Duduk Sampeyan, Kec. Duduksampeyan, Kabupaten Gresik, Jawa Timur 61162</li>
+                        <li><i class="fas fa-phone"></i> +62 851-7548-3758</li>
+                        <li><i class="fas fa-envelope"></i> uyhmusic@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 NS Digitech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking
+                    document.querySelector('nav ul').classList.remove('show');
+                }
+            });
+        });
+        
+        // Form Submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan menghubungi Anda segera.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
